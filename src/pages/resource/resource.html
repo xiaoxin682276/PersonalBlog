@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>资源列表 - 昕染的个人博客</title>
+  <link rel="stylesheet" href="resources_setting.css">
+  <link rel="icon" href="../../YUKI.ico" type="image/x-icon">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+  <header>
+    <span class="nav-container">
+      <nav>
+        <a href="../home/home.html">首页</a>
+        <a href="resource.html">资源</a>
+        <a href="#">项目</a>
+        <a href="#">关于我</a>
+      </nav>
+    </span>
+  </header>
+
+  <div id="app">
+    <div class="filter-bar">
+      <button 
+        v-for="cat in categories" 
+        :key="cat" 
+        :class="{'active': currentCategory === cat}"
+        @click="currentCategory = cat"
+      >
+        {{ cat }}
+      </button>
+    </div>
+
+    <!-- 搜索框 -->
+    <div class="search-bar">
+      <input type="text" v-model="searchQuery" placeholder="输入资源名称关键词..." />
+    </div>
+
+    <div class="resource-list">
+      <div 
+        class="resource-card" 
+        v-for="item in filteredResources" 
+        :key="item.name"
+      >
+        <h3>{{ item.name }}</h3>
+        <p>{{ item.description }}</p>
+        <a :href="item.link" target="_blank">查看资源</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 昕染的小站 · All Rights Reserved <br>联系方式：xiaoxin682276@qq.com
+  </footer>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        currentCategory: '全部',
+        searchQuery: '',
+        categories: ['全部', '实用工具', '游戏资源', '学习资源', '影视资源'],
+        resources: [
+          { name: 'I❤PDF', description: '在线各类文档转换', category: '实用工具', link: 'https://www.ilovepdf.com/' },
+          { name: 'MTool', description: '傻瓜式一键汉化软件', category: '游戏资源', link: 'https://mtool.app/?lang=chs' },
+          { name: 'Gammas', description: '在线AI PPT制作', category: '实用工具', link: 'https://gamma.app/' },
+          { name: 'Amymind', description: '在线AI思维导图生成', category: '实用工具', link: 'https://amymind.com/' },
+          { name: '数据小助手', description: '在线物理实验公式计算器', category: '学习资源', link: 'http://testzs.cn/' },
+          { name: 'PearOCR', description: '在线图片提取文字', category: '实用工具', link: 'https://pearocr.com/#/' },
+          { name:'Whimsical',description:'在线AI流程图生成',category:'实用工具',link:'https://whimsical.com/ai/ai-text-to-flowchart'},
+          { name:'Netflix',description:'全球最大的流媒体网站',category:'影视资源',link:'https://www.netflix.com/'},
+          { name:'磁力天堂',description:'超多影视资源的磁力资源网站',category:'影视资源',link:'https://www.clgod.xyz/'},
+          { name:'RARBG',description:'全网电影磁力资源一网打尽',category:'影视资源',link:'https://rargb.to/'},
+          { name:'海盗湾',description:'全球最大的BT种子网站',category:'影视资源',link:'https://thepiratebay.org/index.html'}
+        ]
+      },
+      computed: {
+        filteredResources() {
+          return this.resources.filter(r => {
+            const matchCategory = this.currentCategory === '全部' || r.category === this.currentCategory;
+            const matchSearch = r.name.toLowerCase().includes(this.searchQuery.toLowerCase());
+            return matchCategory && matchSearch;
+          });
+        }
+      }
+    });
+  </script>
+</body>
+</html>
