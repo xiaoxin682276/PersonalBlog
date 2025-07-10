@@ -68,7 +68,7 @@ header h2 {
   min-height: 300px;
 }
 
-/* 图片区域 */
+/* 图片容器和图片优化 */
 .top_img {
   width: 200px;
   height: 200px;
@@ -78,6 +78,11 @@ header h2 {
   background-color: #fff;
   padding: 6px;
   flex-shrink: 0;
+  transition: all 0.3s ease;
+  /* 确保图片不会变形 */
+  object-position: center;
+  /* 添加边框效果 */
+  border: 2px solid #fff;
 }
 
 /* 右侧内容区域 */
@@ -170,11 +175,15 @@ footer {
     align-items: center;
     text-align: center;
     gap: 15px;
+    min-height: auto;
   }
   
+  /* 移动端图片优化 */
   .top_img {
     width: 150px;
     height: 150px;
+    padding: 4px;
+    border-width: 1px;
   }
   
   .top_right {
@@ -215,9 +224,20 @@ footer {
     font-size: 14px;
   }
   
+  header {
+    padding: 0 5px;
+  }
+  
+  header h2 {
+    gap: 10px;
+  }
+  
+  /* 小屏幕图片优化 */
   .top_img {
     width: 120px;
     height: 120px;
+    padding: 3px;
+    border-width: 1px;
   }
   
   .top_right {
@@ -235,6 +255,23 @@ footer {
   .text {
     padding: 12px;
     font-size: 14px;
+    margin: 15px 5px;
+  }
+}
+
+/* 中等屏幕适配（平板横屏） */
+@media (min-width: 769px) and (max-width: 1024px) {
+  header h2 {
+    gap: 15px;
+  }
+  
+  .top_img {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .top_right {
+    padding: 14px;
   }
 }
 
@@ -246,6 +283,16 @@ footer {
   
   header {
     padding: 0 40px;
+  }
+  
+  header h2 {
+    gap: 25px;
+  }
+  
+  .top_img {
+    width: 220px;
+    height: 220px;
+    padding: 8px;
   }
   
   .text {
@@ -263,8 +310,99 @@ footer {
     padding: 0 60px;
   }
   
+  header h2 {
+    gap: 30px;
+  }
+  
   .top_img {
     width: 250px;
     height: 250px;
+    padding: 10px;
+  }
+  
+  .top_right {
+    padding: 20px;
+  }
+  
+  .top_right th {
+    font-size: 20px;
+  }
+  
+  .top_right a {
+    font-size: 16px;
+  }
+}
+
+/* 超小屏幕适配（小手机） */
+@media (max-width: 360px) {
+  .nav-container {
+    padding: 3px;
+  }
+  
+  nav {
+    padding: 6px;
+  }
+  
+  nav a {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  
+  header {
+    padding: 0 3px;
+  }
+  
+  header h2 {
+    gap: 8px;
+  }
+  
+  .top_img {
+    width: 100px;
+    height: 100px;
+    padding: 2px;
+  }
+  
+  .top_right {
+    padding: 10px;
+  }
+  
+  .top_right th {
+    font-size: 14px;
+  }
+  
+  .top_right a {
+    font-size: 12px;
+  }
+  
+  .text {
+    padding: 10px;
+    font-size: 13px;
+    margin: 10px 3px;
+  }
+}
+
+/* 横屏手机适配 */
+@media (max-width: 768px) and (orientation: landscape) {
+  header h2 {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .top_img {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .top_right {
+    max-width: none;
+  }
+}
+
+/* 横屏平板适配 */
+@media (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
+  .top_img {
+    width: 160px;
+    height: 160px;
   }
 }
