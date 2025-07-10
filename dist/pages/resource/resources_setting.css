@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "微软雅黑 Light", serif;
+    background-color: #b6e7db;
+    line-height: 1.5;
+  }
+  
+  .nav-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 20px 0;
+    box-sizing: border-box;
+  }
+  
+  nav {
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 8px 0;
+    width: 100%;
+    font-family: 'Segoe UI', sans-serif;
+    position: relative;
+    top: 0;
+  }
+  
+  nav a {
+    color: #007bff;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  
+  nav a:hover {
+    background-color: #f2f2f2;
+    color: #0056b3;
+  }
+  
+  /* 分类按钮 */
+  .filter-bar {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px auto;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 10px;
+    width: 80vw;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .filter-bar button {
+    margin: 6px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    background-color: #b6e7db;
+    color: #007bff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  
+  .filter-bar button:hover,
+  .filter-bar button.active {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  /* 搜索框 */
+  .search-bar {
+    display: flex;
+    justify-content: center;
+    margin: 10px auto 20px auto;
+    width: 80vw;
+  }
+  
+  .search-bar input {
+    width: 50%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    font-size: 14px;
+    transition: border-color 0.3s;
+  }
+  
+  .search-bar input:focus {
+    border-color: #007bff;
+  }
+  
+  /* 资源列表 */
+  .resource-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px auto;
+    width: 80vw;
+  }
+  
+  .resource-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    transition: transform 0.2s;
+  }
+  
+  .resource-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .resource-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .resource-card p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  .resource-card a {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .resource-card a:hover {
+    color: #0056b3;
+  }
+  
+  footer {
+    text-align: center;
+    font-size: 14px;
+    margin: 40px 0 20px 0;
+    color: #666;
+  }
+  
