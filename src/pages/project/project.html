@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>项目介绍 - 昕染的个人博客</title>
+  <link rel="stylesheet" href="project_setting.css">
+  <link rel="icon" href="../../YUKI.ico" type="image/x-icon">
+</head>
+<body>
+  <header>
+    <span class="nav-container">
+      <nav>
+        <a href="../../index.html">首页</a>
+        <a href="../resource/resource.html">资源</a>
+        <a href="project.html">项目</a>
+        <a href="../home/top_texts.html">关于我</a>
+      </nav>
+    </span>
+  </header>
+
+  <div id="app">
+    <div class="project-info-box">
+      <section>
+        <h2>关于本博客</h2>
+        <p>本博客基于 HTML、CSS、JavaScript 构建，使用 Gulp 和 Webpack 进行前端自动化构建和打包。页面静态化，用于个人技术分享与展示。</p>
+      </section>
+      <section>
+        <h2>主要功能</h2>
+        <ul>
+          <li>首页与导航</li>
+          <li>资源整理与展示</li>
+          <li>自定义样式与主题</li>
+          <li>响应式布局</li>
+        </ul>
+      </section>
+      <section>
+        <h2>技术栈</h2>
+        <ul>
+          <li>HTML5 & CSS3</li>
+          <li>JavaScript (ES6+)</li>
+          <li>Gulp</li>
+          <li>Webpack</li>
+        </ul>
+      </section>
+    </div>
+    <section>
+      <h2>示例项目集</h2>
+      <div class="resource-list">
+        <div class="resource-card" v-for="item in projects" :key="item.name">
+          <h3>{{ item.name }}</h3>
+          <p>{{ item.description }}</p>
+          <a :href="item.link" target="_blank">查看项目</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    © 2025 昕染的小站 · All Rights Reserved <br>联系方式：xiaoxin682276@qq.com
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        projects: [
+          { name: '个人博客', description: '本项目源码，静态博客系统，适合个人技术分享。', link: 'https://github.com/xiaoxin682276/PersonalBlog' },
+          { name: '救护车调度管理系统', description: '基于React和Java Spring Boot的前后端分离项目，适合新手练习。', link: 'https://github.com/xiaoxin682276/AmbulanceDispatchSystem' },
+          { name: 'Python坦克大战', description: '基于pygame开发的小游戏', link: 'https://github.com/xiaoxin682276/BattleCity' }
+        ]
+      }
+    });
+  </script>
+</body>
+</html> 
