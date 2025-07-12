@@ -125,6 +125,256 @@ header h2 {
   color: #0056b3;
 }
 
+/* 主要内容容器 */
+#app {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* 个人介绍区域 */
+.profile-section {
+  margin-bottom: 40px;
+}
+
+.profile-card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  overflow: hidden;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #007bff;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+
+.profile-info h1 {
+  font-size: 2.5em;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.profile-title {
+  font-size: 1.2em;
+  color: #007bff;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.profile-bio {
+  font-size: 1.1em;
+  color: #666;
+  line-height: 1.6;
+  max-width: 500px;
+}
+
+.profile-stats {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 25px;
+  border-top: 1px solid #eee;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-size: 2em;
+  font-weight: bold;
+  color: #007bff;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 0.9em;
+  color: #666;
+}
+
+/* 技能展示区域 */
+.skills-section {
+  margin-bottom: 40px;
+}
+
+.skills-section h2 {
+  font-size: 2em;
+  color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.skill-category {
+  background: #fff;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.skill-category h3 {
+  font-size: 1.3em;
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-tag {
+  background: #e3f2fd;
+  color: #1976d2;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.9em;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.skill-tag:hover {
+  background: #007bff;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* 联系方式区域 */
+.contact-section {
+  margin-bottom: 40px;
+}
+
+.contact-section h2 {
+  font-size: 2em;
+  color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.contact-item {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: transform 0.2s;
+}
+
+.contact-item:hover {
+  transform: translateY(-5px);
+}
+
+.contact-icon {
+  font-size: 2em;
+  width: 50px;
+  text-align: center;
+}
+
+.contact-info h4 {
+  font-size: 1.1em;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.contact-info p {
+  color: #666;
+  font-size: 0.9em;
+}
+
+.contact-link {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 0.9em;
+  word-break: break-all;
+  display: inline-block;
+  max-width: 100%;
+  transition: color 0.2s;
+}
+
+.contact-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* 最新动态区域 */
+.updates-section {
+  margin-bottom: 40px;
+}
+
+.updates-section h2 {
+  font-size: 2em;
+  color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.updates-list {
+  background: #fff;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.update-item {
+  display: flex;
+  gap: 20px;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.update-item:last-child {
+  border-bottom: none;
+}
+
+.update-date {
+  color: #007bff;
+  font-weight: 500;
+  font-size: 0.9em;
+  min-width: 100px;
+}
+
+.update-content h4 {
+  color: #333;
+  margin-bottom: 5px;
+  font-size: 1.1em;
+}
+
+.update-content p {
+  color: #666;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
 /* 文本内容区域 */
 .text {
   font-family: 楷体, serif;
@@ -199,6 +449,55 @@ footer {
     font-size: 14px;
   }
   
+  /* 新home页面移动端适配 */
+  #app {
+    padding: 15px;
+  }
+  
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+  
+  .profile-avatar {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .profile-info h1 {
+    font-size: 2em;
+  }
+  
+  .profile-stats {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .contact-item {
+    padding: 15px;
+  }
+  
+  .update-item {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .update-date {
+    min-width: auto;
+  }
+}
+  
   .text {
     margin: 20px 10px;
     padding: 15px;
@@ -207,7 +506,7 @@ footer {
   footer {
     padding: 0 10px;
   }
-}
+
 
 /* 小屏幕手机适配 */
 @media (max-width: 480px) {

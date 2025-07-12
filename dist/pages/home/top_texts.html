@@ -1,28 +1,145 @@
-<html>
-    <head>
-        <link rel="stylesheet" href="texts_setting.css">
-    </head>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>关于我 - 昕染的个人博客</title>
+  <link rel="stylesheet" href="home_setting.css">
+  <link rel="icon" href="../../YUKI.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="../../YUKI.ico" type="image/x-icon">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+  <header>
+    <span class="nav-container">
+      <nav>
+        <a href="../../index.html">首页</a>
+        <a href="../resource/resource.html">资源</a>
+        <a href="../project/project.html">项目</a>
+        <a href="top_texts.html">关于我</a>
+      </nav>
+    </span>
+  </header>
 
-    <body>
-        <header>
-            <span>
-                待定中。。
-            </span>。
-        </header>
+  <div id="app">
+    <!-- 个人介绍区域 -->
+    <div class="profile-section">
+      <div class="profile-card">
+        <div class="profile-header">
+          <img class="profile-avatar" src="../../img/由岐.jpg" alt="昕染的照片">
+          <div class="profile-info">
+            <h1>昕染</h1>
+            <p class="profile-title">一个普通大学生</p>
+            <p class="profile-bio">随便写写学习记录，希望能帮到诸位</p>
+          </div>
+        </div>
+        
+        <div class="profile-stats">
+          <div class="stat-item">
+            <span class="stat-number">2+</span>
+            <span class="stat-label">年开发经验</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">n/a</span>
+            <span class="stat-label">技术文章</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">n/a</span>
+            <span class="stat-label">开源项目</span>
+          </div>
+        </div>
+      </div>
+    </div>
 
-        <footer>
-            © 2025 昕染的小站 · All Rights Reserved <br>联系方式：xiaoxin682276@qq.com
-        </footer>
+    <!-- 技能展示区域 -->
+    <div class="skills-section">
+      <h2>技术技能</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>前端技术</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">HTML5</span>
+            <span class="skill-tag">CSS3</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">React</span>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <h3>后端技术</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">MySQL</span>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <h3>开发工具</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">Linux</span>
+            <span class="skill-tag">VS Code</span>
+            <span class="skill-tag">Hadoop</span>
+          </div>
+        </div>
+      </div>
+    </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/yzhanweather@latest/docs/yzhanweather.min.js"></script>
-        <script>
-            // 页面加载完成后自动启动雪花效果
-            document.addEventListener('DOMContentLoaded', function() {
-                setTimeout(() => {
-                    const yzhanweather = new YZhanWeather();
-                    yzhanweather.run('snow', { maxDuration: 8 });
-                }, 1000);
-            });
-        </script>
-    </body>
+    <!-- 联系方式区域 -->
+    <div class="contact-section">
+      <h2>联系我</h2>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div class="contact-info">
+            <h4>邮箱</h4>
+            <p>xiaoxin682276@qq.com</p>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">💬</div>
+          <div class="contact-info">
+            <h4>Telegram</h4>
+            <a href="https://t.me/xiaoxin682276" target="_blank" class="contact-link">@xiaoxin682276</a>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">🐙</div>
+          <div class="contact-info">
+            <h4>GitHub</h4>
+            <a href="https://github.com/xiaoxin682276" target="_blank" class="contact-link">github.com/xiaoxin682276</a>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">📝</div>
+          <div class="contact-info">
+            <h4>X</h4>
+            <a href="https://x.com/wangxin84459945?t=g0qb9AV8-YajLH2B6nNd2g&s=09" target="_blank" class="contact-link">@wangxin84459945</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <footer>
+    © 2025 昕染的小站 · All Rights Reserved <br>联系方式：xiaoxin682276@qq.com
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/yzhanweather@latest/docs/yzhanweather.min.js"></script>
+  <script>
+    
+
+    // 页面加载完成后自动启动雪花效果
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(() => {
+        const yzhanweather = new YZhanWeather();
+        yzhanweather.run('snow', { maxDuration: 8 });
+      }, 1000);
+    });
+  </script>
+</body>
 </html>

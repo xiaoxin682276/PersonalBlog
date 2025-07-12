@@ -35,19 +35,67 @@
 
     <!-- 搜索框 -->
     <div class="search-bar">
-      <input type="text" v-model="searchQuery" placeholder="输入资源名称关键词..." />
+      <input type="text" v-model="searchQuery" placeholder="输入资源名称关键词或访问状态（直连/魔法）..." />
+    </div>
+
+    <div class="warning-box">
+      <p>☞本站资源仅供学习交流使用，请勿用于商业用途</p>
+      <p>☞需要魔法才能抵达的网站会给出提示</p>
     </div>
 
     <div class="resource-list">
       <div 
         class="resource-card" 
-        v-for="item in filteredResources" 
+        v-for="item in paginatedResources" 
         :key="item.name"
       >
         <h3>{{ item.name }}</h3>
         <p>{{ item.description }}</p>
+        <div class="resource-tags">
+          <span class="category-tag">{{ item.category }}</span>
+          <span class="access-tag" :class="item.accessStatus === '直连' ? 'direct' : 'proxy'">
+            {{ item.accessStatus }}
+          </span>
+        </div>
         <a :href="item.link" target="_blank">查看资源</a>
       </div>
+    </div>
+
+    <!-- 分页组件 -->
+    <div class="pagination" v-if="totalPages > 1">
+      <button 
+        @click="currentPage = 1" 
+        :disabled="currentPage === 1"
+        class="page-btn"
+      >
+        首页
+      </button>
+      <button 
+        @click="currentPage--" 
+        :disabled="currentPage === 1"
+        class="page-btn"
+      >
+        上一页
+      </button>
+      
+      <span class="page-info">
+        第 {{ currentPage }} 页，共 {{ totalPages }} 页
+      </span>
+      
+      <button 
+        @click="currentPage++" 
+        :disabled="currentPage === totalPages"
+        class="page-btn"
+      >
+        下一页
+      </button>
+      <button 
+        @click="currentPage = totalPages" 
+        :disabled="currentPage === totalPages"
+        class="page-btn"
+      >
+        末页
+      </button>
     </div>
   </div>
 
@@ -62,28 +110,71 @@
       data: {
         currentCategory: '全部',
         searchQuery: '',
-        categories: ['全部', '实用工具', '游戏资源', '学习资源', '影视资源'],
+        currentPage: 1,
+        itemsPerPage: 12,
+        categories: ['全部', '实用工具', '游戏资源', '学习资源', '影视资源', '直连', '魔法'],
         resources: [
-          { name: 'I❤PDF', description: '在线各类文档转换', category: '实用工具', link: 'https://www.ilovepdf.com/' },
-          { name: 'MTool', description: '傻瓜式一键汉化软件', category: '游戏资源', link: 'https://mtool.app/?lang=chs' },
-          { name: 'Gammas', description: '在线AI PPT制作', category: '实用工具', link: 'https://gamma.app/' },
-          { name: 'Amymind', description: '在线AI思维导图生成', category: '实用工具', link: 'https://amymind.com/' },
-          { name: '数据小助手', description: '在线物理实验公式计算器', category: '学习资源', link: 'http://testzs.cn/' },
-          { name: 'PearOCR', description: '在线图片提取文字', category: '实用工具', link: 'https://pearocr.com/#/' },
-          { name:'Whimsical',description:'在线AI流程图生成',category:'实用工具',link:'https://whimsical.com/ai/ai-text-to-flowchart'},
-          { name:'Netflix',description:'全球最大的流媒体网站',category:'影视资源',link:'https://www.netflix.com/'},
-          { name:'磁力天堂',description:'超多影视资源的磁力资源网站',category:'影视资源',link:'https://www.clgod.xyz/'},
-          { name:'RARBG',description:'全网电影磁力资源一网打尽',category:'影视资源',link:'https://rargb.to/'},
-          { name:'海盗湾',description:'全球最大的BT种子网站',category:'影视资源',link:'https://thepiratebay.org/index.html'}
+          { name: 'I❤PDF', description: '在线各类文档转换', category: '实用工具', accessStatus: '直连', link: 'https://www.ilovepdf.com/' },
+          { name: 'MTool', description: '傻瓜式一键汉化软件', category: '游戏资源', accessStatus: '直连', link: 'https://mtool.app/?lang=chs' },
+          { name: 'Gammas', description: '在线AI PPT制作', category: '实用工具', accessStatus: '需要魔法', link: 'https://gamma.app/' },
+          { name: 'Amymind', description: '在线AI思维导图生成', category: '实用工具', accessStatus: '需要魔法', link: 'https://amymind.com/' },
+          { name: '数据小助手', description: '在线物理实验公式计算器', category: '学习资源', accessStatus: '直连', link: 'http://testzs.cn/' },
+          { name: 'PearOCR', description: '在线图片提取文字', category: '实用工具', accessStatus: '直连', link: 'https://pearocr.com/#/' },
+          { name:'Whimsical',description:'在线AI流程图生成',category:'实用工具',accessStatus:'需要魔法',link:'https://whimsical.com/ai/ai-text-to-flowchart'},
+          { name:'磁力天堂',description:'超多影视资源的磁力资源网站',category:'影视资源',accessStatus:'直连',link:'https://www.clgod.xyz/'},
+          { name:'RARBG',description:'全网电影磁力资源一网打尽',category:'影视资源',accessStatus:'需要魔法',link:'https://rargb.to/'},
+          { name:'海盗湾',description:'全球最大的BT种子网站',category:'影视资源',accessStatus:'需要魔法',link:'https://thepiratebay.org/index.html'},
+          { name: 'LibGen', description: '全球最大的电子书、学术论文下载站', category: '学习资源', accessStatus: '需要魔法', link: 'https://libgen.ac/' },
+          { name: 'Project Gutenberg', description: '英文经典书籍电子图书馆', category: '学习资源', accessStatus: '需要魔法', link: 'https://www.gutenberg.org/' },
+          { name: 'Internet Archive', description: '全球最大互联网档案馆', category: '学习资源', accessStatus: '需要魔法', link: 'https://archive.org/' },
+          { name: 'Pixiv', description: '日本插画、漫画社区', category: '学习资源', accessStatus: '需要魔法', link: 'https://www.pixiv.net/' },
+          { name: 'Unsplash', description: '免费高清图片素材站', category: '学习资源', accessStatus: '需要魔法', link: 'https://unsplash.com/' },
+          { name: 'OpenAI Playground', description: '各类AI接口资源购买', category: '学习资源', accessStatus: '需要魔法', link: 'https://platform.openai.com/playground' },
+          { name: 'Coursera', description: '全球知名在线课程付费平台', category: '学习资源', accessStatus: '需要魔法', link: 'https://www.coursera.org/' },
+          { name: 'Khan Academy', description: '免费学习平台，涵盖数学、科学等', category: '学习资源', accessStatus: '需要魔法', link: 'https://www.khanacademy.org/' }
         ]
       },
       computed: {
         filteredResources() {
           return this.resources.filter(r => {
-            const matchCategory = this.currentCategory === '全部' || r.category === this.currentCategory;
-            const matchSearch = r.name.toLowerCase().includes(this.searchQuery.toLowerCase());
+            let matchCategory = this.currentCategory === '全部' || r.category === this.currentCategory;
+            
+            // 处理直连分类
+            if (this.currentCategory === '直连') {
+              matchCategory = r.accessStatus === '直连';
+            }
+            
+            // 处理魔法分类
+            if (this.currentCategory === '魔法') {
+              matchCategory = r.accessStatus === '需要魔法';
+            }
+            
+            // 搜索功能：支持按资源名称和访问状态搜索
+            const searchLower = this.searchQuery.toLowerCase();
+            const matchName = r.name.toLowerCase().includes(searchLower);
+            const matchDescription = r.description.toLowerCase().includes(searchLower);
+            const matchAccessStatus = r.accessStatus.toLowerCase().includes(searchLower);
+            
+            const matchSearch = matchName || matchDescription || matchAccessStatus;
+            
             return matchCategory && matchSearch;
           });
+        },
+        totalPages() {
+          return Math.ceil(this.filteredResources.length / this.itemsPerPage);
+        },
+        paginatedResources() {
+          const start = (this.currentPage - 1) * this.itemsPerPage;
+          const end = start + this.itemsPerPage;
+          return this.filteredResources.slice(start, end);
+        }
+      },
+      watch: {
+        currentCategory() {
+          this.currentPage = 1;
+        },
+        searchQuery() {
+          this.currentPage = 1;
         }
       }
     });

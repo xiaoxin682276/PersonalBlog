@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>git国内使用魔法无法推送 - 昕染的个人博客</title>
+  <link rel="stylesheet" href="../article_setting.css">
+  <link rel="icon" href="../../../YUKI.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="../../../YUKI.ico" type="image/x-icon">
+</head>
+<body>
+  <header>
+    <span class="nav-container">
+      <nav>
+        <a href="../../../index.html">首页</a>
+        <a href="../../resource/resource.html">资源</a>
+        <a href="../../project/project.html">项目</a>
+        <a href="../../home/top_texts.html">关于我</a>
+      </nav>
+    </span>
+  </header>
+
+  <div class="article-container">
+    <div class="article-header">
+      <h1 class="article-title">git国内使用魔法无法推送</h1>
+      <div class="article-meta">
+        <span>发布时间：2025-07-12</span> | 
+        <span>分类：技术分享</span> | 
+        <span>作者：昕染</span>
+      </div>
+    </div>
+
+    <div class="article-content">
+      <h2>问题描述</h2>
+      <p>当我们使用魔法软件在Git进行代码推送时，经常会遇到以下类似错误：</p>
+      <pre><code>fatal: unable to access ' 网页链接;: failed to connect to 127.0.0.1 
+port 7890 after 2092 ms: couldn't connect to server</code></pre>
+      
+      <div class="warning-box">
+        <strong>⚠️ 注意：</strong>这个问题通常是由于代理端口配置不正确导致的。
+      </div>
+
+      <h2>解决方案</h2>
+
+      <h3>在开始之前，请确保您的代理服务正常运行，且网络流畅</h3>
+
+      <h3>步骤一：查看代理服务器端口</h3>
+      <p>在您的电脑中依次打开设置-->网络和Internet-->代理-->手动设置代理-->编辑</p>
+      <p>查看代理服务器地址右侧的端口号，先记下来</p>
+  
+      <h3>步骤二：打开cmd终端</h3>
+      <p>依次输入以下命令：</p>
+      <pre><code>git config --global http.proxy http://127.0.0.1:(端口号)
+git config --global https.proxy http://127.0.0.1:(端口号)</code></pre>
+
+      <h3>步骤三：检验配置是否完成</h3>
+      <p>继续在终端输入以下代码：</p>
+      <pre><code>git config --global -l</code></pre>
+
+      <div class="success-box">
+        <strong>✅ 成功提示：</strong>如果看到输出了账户信息，说明配置完成。
+      </div>
+
+    <div class="back-to-column">
+      <a href="../page1.html">← 返回专栏</a>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 昕染的小站 · All Rights Reserved <br>联系方式：xiaoxin682276@qq.com
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/yzhanweather@latest/docs/yzhanweather.min.js"></script>
+  <script>
+    // 页面加载完成后自动启动雪花效果
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(() => {
+        const yzhanweather = new YZhanWeather();
+        yzhanweather.run('snow', { maxDuration: 8 });
+      }, 1000);
+    });
+  </script>
+</body>
+</html> 

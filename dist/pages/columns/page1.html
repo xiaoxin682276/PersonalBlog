@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>技术专栏 - 昕染的个人博客</title>
+  <link rel="stylesheet" href="columns_setting.css">
+  <link rel="icon" href="../../YUKI.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="../../YUKI.ico" type="image/x-icon">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+  <header>
+    <span class="nav-container">
+      <nav>
+        <a href="../../index.html">首页</a>
+        <a href="../resource/resource.html">资源</a>
+        <a href="../project/project.html">项目</a>
+        <a href="../home/top_texts.html">关于我</a>
+      </nav>
+    </span>
+  </header>
+
+  <div id="app">
+    <div class="column-header">
+      <h1>技术专栏</h1>
+      <p>分享技术心得、学习笔记和实用技巧，记录技术成长之路</p>
+    </div>
+
+    <div class="article-list">
+      <div 
+        class="article-card" 
+        v-for="article in articles" 
+        :key="article.id"
+      >
+        <h3>{{ article.title }}</h3>
+        <div class="meta">
+          <span class="date">{{ article.date }}</span>
+          <span class="category">{{ article.category }}</span>
+        </div>
+        <p class="excerpt">{{ article.excerpt }}</p>
+        <a href="page1/git-article.html" class="read-more">阅读全文</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 昕染的小站 · All Rights Reserved <br>联系方式：xiaoxin682276@qq.com
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/yzhanweather@latest/docs/yzhanweather.min.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        articles: [
+          {
+            id: 1,
+            title: 'git国内使用魔法无法推送',
+            date: '2025-07-12',
+            category: '技术分享',
+            excerpt: '使用魔法时git推送显示"fatal: unable to access"解决方案'
+          }
+        ]
+      }
+    });
+
+    // 页面加载完成后自动启动雪花效果
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(() => {
+        const yzhanweather = new YZhanWeather();
+        yzhanweather.run('snow', { maxDuration: 8 });
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
