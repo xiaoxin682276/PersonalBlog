@@ -19,7 +19,9 @@
   "scripts": {
     "build": "gulp build",
     "prettier": "prettier --write ./**/*.{js,json,md,mjs,yml}",
-    "test": "gulp archive && mocha --reporter spec --timeout 5000"
+    "test": "gulp archive && mocha --reporter spec --timeout 5000",
+    "deploy": "npm run build && git add dist && git commit -m 'Build for deployment' && git push",
+    "predeploy": "npm run build"
   },
   "devDependencies": {
     "archiver": "^7.0.1",
