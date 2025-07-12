@@ -97,6 +97,16 @@
   </footer>
 
   <script src="js/app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/yzhanweather@latest/docs/yzhanweather.min.js"></script>
+  <script>
+    // 页面加载完成后自动启动雪花效果
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(() => {
+        const yzhanweather = new YZhanWeather();
+        yzhanweather.run('snow', { maxDuration: 8 });
+      }, 1000);
+    });
+  </script>
 </body>
 
 </html>

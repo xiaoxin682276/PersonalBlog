@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>天气效果测试 - 昕染的个人博客</title>
+  <style>
+    body {
+      font-family: 'Microsoft YaHei', Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+      color: white;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .description {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+    
+    .controls {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
+    }
+    
+    .control-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+    
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+    
+    .btn.active {
+      background: #4CAF50;
+      border-color: #4CAF50;
+    }
+    
+    .btn.clear {
+      background: #f44336;
+      border-color: #f44336;
+    }
+    
+    .btn.clear:hover {
+      background: #d32f2f;
+    }
+    
+    .info {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 2rem;
+      backdrop-filter: blur(10px);
+    }
+    
+    .info h3 {
+      margin-top: 0;
+      color: #fff;
+    }
+    
+    .info p {
+      margin: 0.5rem 0;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🌤️ 天气效果测试</h1>
+    <p class="description">点击下方按钮体验不同的天气动画效果</p>
+    
+    <div class="controls">
+      <div class="control-buttons">
+        <button class="btn" onclick="runWeather('firefly')">🦋 萤火虫</button>
+        <button class="btn" onclick="runWeather('sakura')">🌸 樱花</button>
+        <button class="btn" onclick="runWeather('snow')">❄️ 雪花</button>
+        <button class="btn" onclick="runWeather('rain')">🌧️ 雨滴</button>
+        <button class="btn clear" onclick="clearWeather()">🧹 清除</button>
+      </div>
+    </div>
+    
+    <div class="info">
+      <h3>使用说明</h3>
+      <p><strong>萤火虫：</strong>黄色光点从屏幕中央向四周扩散</p>
+      <p><strong>樱花：</strong>粉色花瓣从屏幕顶部飘落</p>
+      <p><strong>雪花：</strong>白色雪花从屏幕顶部飘落</p>
+      <p><strong>雨滴：</strong>透明雨滴从屏幕顶部落下</p>
+      <p><strong>清除：</strong>停止并清除所有动画效果</p>
+    </div>
+  </div>
+
+  <script src="js/yzhanweather-browser.js"></script>
+  <script>
+    let yzhanweather = null;
+    let currentType = null;
+
+    function runWeather(type) {
+      // 清除之前的按钮状态
+      document.querySelectorAll('.btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+      // 设置当前按钮为激活状态
+      event.target.classList.add('active');
+      
+      // 创建或重新创建天气效果
+      if (!yzhanweather) {
+        yzhanweather = new YZhanWeather();
+      }
+      
+      yzhanweather.run(type, { maxDuration: 8 });
+      currentType = type;
+    }
+
+    function clearWeather() {
+      if (yzhanweather) {
+        yzhanweather.clear();
+      }
+      
+      // 清除按钮状态
+      document.querySelectorAll('.btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+      currentType = null;
+    }
+
+    // 页面加载完成后自动启动萤火虫效果
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(() => {
+        runWeather('firefly');
+      }, 1000);
+    });
+  </script>
+</body>
+</html> 
